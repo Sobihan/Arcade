@@ -54,8 +54,8 @@ std::vector <std::string> get_first_last_line(std::vector <std::string> map, int
 void Nibbler:: hitbox()
 {
     if (this->snake.y == this->fruit.y && this->snake.x == this->fruit.x) {
-        this->fruit.x  = rand() % this->limit.width;
-        this->fruit.y = rand() % this->limit.height;
+        this->fruit.x = this->snake.prevtailX;
+        this->fruit.y = this->snake.prevtailY;
         this->snake.ntail += 1;
     }
     if (this->snake.y >= this->limit.height || this->snake.y <= 0)
@@ -84,6 +84,8 @@ std::string Nibbler::get_line (int j, int i, std::string line)
             if (this->snake.tailX[k] == j && this->snake.tailY[k] == i) {
                 line += 'o';
                 isPut = true;
+                this->snake.prevtailX = j;
+                this->snake.prevtailY = i;
             }
         }
         if (! isPut)
@@ -92,7 +94,7 @@ std::string Nibbler::get_line (int j, int i, std::string line)
     hitbox();
     return (line);
 }
-
+// i = y j = x
 void Nibbler::update()
 {
     std::vector <std::string> map;
@@ -194,7 +196,7 @@ bool key_was_pressed(void)
     return (false);
 }
 
-void input()
+void input(Nibbler nib)
 {
     Direction move;
     initscr();
@@ -203,7 +205,7 @@ void input()
     nodelay(stdscr, TRUE);
     curs_set(FALSE);
     keypad(stdscr, TRUE);
-    Nibbler nib;
+    
     std::vector <std::string> map;
     
     while (! nib.isGameOver()) {
@@ -247,5 +249,6 @@ void input()
 /* FRONT A SUPPR*/
 int main()
 {
-    input();
+    Nibbler nib;
+    input(nib);
 }

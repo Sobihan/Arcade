@@ -25,6 +25,8 @@ typedef struct snake_s
     int ntail;
     int tailX[100];
     int tailY[100];
+    int prevtailX;
+    int prevtailY;
 } snakes;
 
 typedef struct fruit_s
