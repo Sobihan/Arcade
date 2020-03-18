@@ -46,7 +46,7 @@ class Nibbler {
     public:
         Nibbler();
         ~Nibbler();
-        void setmap();
+        void update();
         screens getlimit() const;
         fruits getfruit() const;
         snakes getsnake() const;

@@ -93,7 +93,7 @@ std::string Nibbler::get_line (int j, int i, std::string line)
     return (line);
 }
 
-void Nibbler::setmap()
+void Nibbler::update()
 {
     std::vector <std::string> map;
     std::string line;
@@ -222,7 +222,7 @@ void input()
         erase();
         nib.setdir(move);
         nib.change_dir();
-        nib.setmap();
+        nib.update();
         map = nib.getmap();
         int size = map.size();
         for (int i = 0; i != size; i = i + 1)
