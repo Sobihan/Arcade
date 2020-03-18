@@ -104,9 +104,15 @@ void change_dir(Direction dir)
         break;
     case LEFT:
         if (playerX - 1 >= 0 && map[playerY][playerX - 1] != '#') {
-            map[playerY][playerX] = ' ';
-            playerX = playerX - 1;
-            map[playerY][playerX] = 'P';
+            if (map[playerY][playerX - 1] == '<') {
+                map[playerY][playerX] = ' ';
+                playerX = map[playerX].size() - 5;
+                map[playerY][playerX] = 'P';
+            } else {
+                map[playerY][playerX] = ' ';
+                playerX = playerX - 1;
+                map[playerY][playerX] = 'P';
+            }
         }
         break;
     default:
@@ -125,6 +131,10 @@ char prev = ' ';
 
 void changedir(Direction dir)
 {
+    if (step % 4 != 0) {
+        step += 1;
+        return;
+    }
     switch (dir)
     {
     case UP:
@@ -209,6 +219,8 @@ void ghost_move()
         //return;
     }
     changedir(dir);
+    if (Ghost1Y == playerY && Ghost1X == playerX)
+        isGameOver = true;
   //  if (step == 3) {
     //     int move =  rand() % 2;
     //     if (move % 2 == 0) {
@@ -226,10 +238,12 @@ void ghost_move()
     //     return;       
     // }
 
-    changedir(dir);
+   // changedir(dir);
 
     
 }
+
+#include <ctime>
 
 void input()
 {
@@ -242,6 +256,7 @@ void input()
     curs_set(FALSE);
     keypad(stdscr, TRUE);
     Direction dir;
+    clock_t time_req = clock();
     //mvprintw(0, 0, "Coucou");
     while (! isGameOver) {
         if (key_was_pressed()) {
@@ -283,7 +298,8 @@ void input()
         //map[playerY][playerX] = 'P';
        // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         usleep(120500);
-        ghost_move();
+        if (clock() - time_req > 10.0)
+            ghost_move();
         //for (double x = 0; x < 29998999; x += 1);
     }
     endwin();
