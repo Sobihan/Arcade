@@ -195,6 +195,7 @@ void movement()
         mov.push_back(LEFT);
     r = rand() % mov.size();
     dir = mov[r];
+ 
 }
 
 void ghost_move()
@@ -235,6 +236,7 @@ void input()
 {
     map[playerY][playerX] = 'P';
     map[Ghost1Y][Ghost1X] = 'G';
+    
     initscr();
     cbreak();
     noecho();
@@ -244,6 +246,10 @@ void input()
     Direction dir;
     //mvprintw(0, 0, "Coucou");
     while (! isGameOver) {
+           if (playerX == Ghost1X && playerY == Ghost1Y) {
+                printf("U lost \n");
+                exit (84);
+        }
         if (key_was_pressed()) {
             int key = getch();
             if (key == KEY_RIGHT)
@@ -254,6 +260,9 @@ void input()
                 dir = DOWN;
             else if (key == KEY_LEFT)
                 dir = LEFT;
+                
+        
+
         }
         erase();
         change_dir(dir);
