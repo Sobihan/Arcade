@@ -78,6 +78,12 @@ Nibbler display_graph(Nibbler nib)
     sf::Text text;
     std::vector<sf::RectangleShape> rectangles;
     sf::Font font;
+    sf::Texture gameover;
+    sf::Sprite gameoverr;
+    
+
+    gameover.loadFromFile("fin.jpg");
+    gameoverr.setTexture(gameover);
 
     if (!font.loadFromFile("arial.ttf")) {
         std::cout << "ERror";
@@ -109,8 +115,10 @@ Nibbler display_graph(Nibbler nib)
         }
         else {
             window.clear();
-            window.draw(text);
+            window.draw(gameoverr);
             window.display();
+            for (double x = 0; x < 1382299229; x = x + 1);
+                exit (0);
 
         }
     }
