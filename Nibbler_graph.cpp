@@ -54,6 +54,7 @@ std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map)
     return (rect);
 }
 
+bool is_graph = true;
 Direction get_direction(Direction move)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -64,6 +65,8 @@ Direction get_direction(Direction move)
         move = DOWN;
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         move = LEFT;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+        is_graph = false;
     return (move);
 }
 
@@ -80,7 +83,7 @@ Nibbler display_graph(Nibbler nib)
     sf::Font font;
     sf::Texture gameover;
     sf::Sprite gameoverr;
-    
+    is_graph = true;
 
     gameover.loadFromFile("fin.jpg");
     gameoverr.setTexture(gameover);
@@ -96,8 +99,10 @@ Nibbler display_graph(Nibbler nib)
 
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window.close();
+                exit(0);
+            }
         }
         if (! nib.isGameOver()) {
             move = get_direction(move);
@@ -117,18 +122,21 @@ Nibbler display_graph(Nibbler nib)
             window.clear();
             window.draw(gameoverr);
             window.display();
-            for (double x = 0; x < 1382299229; x = x + 1);
-                exit (0);
-
+            //for (double x = 0; x < 1382299229; x = x + 1);
+                //exit (0);
+        }
+        if (is_graph == false) {
+                window.close();
+                break;
         }
     }
     return (nib);
 }
 
-int main()
-{
-    Nibbler nib;
-    std::vector <std::string> map;
+// int main()
+// {
+//     Nibbler nib;
+//     std::vector <std::string> map;
 
-    nib = display_graph(nib);
-}
+//     nib = display_graph(nib);
+// }
