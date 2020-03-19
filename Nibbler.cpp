@@ -17,6 +17,7 @@ Nibbler::Nibbler()
     this->snake.y = this->limit.height / 2;
     this->snake.ntail = 0;
     this->firstmove = 0;
+    this->score = 0;
     this->GameOver = false;
 }
 
@@ -57,6 +58,7 @@ void Nibbler:: hitbox()
         this->fruit.x = this->snake.prevtailX;
         this->fruit.y = this->snake.prevtailY;
         this->snake.ntail += 1;
+        this->score += 1;
     }
     if (this->snake.y >= this->limit.height || this->snake.y <= 0)
         this->GameOver = true;
@@ -68,6 +70,11 @@ void Nibbler:: hitbox()
             break;
         }
 
+}
+
+int Nibbler::getscore() const
+{
+    return (this->score);
 }
 
 std::string Nibbler::get_line (int j, int i, std::string line)

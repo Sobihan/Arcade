@@ -59,6 +59,7 @@ class Nibbler {
         void setdir(Direction move);
         bool isGameOver() const;
         void tailmove();
+        int getscore() const;
     protected:
     private:
         screens limit;
@@ -68,6 +69,7 @@ class Nibbler {
         bool GameOver;
         Direction dir;
         std::vector <std::string> map;
+        int score;
 };
 
 #endif /* !NIBBLER_HPP_ */
