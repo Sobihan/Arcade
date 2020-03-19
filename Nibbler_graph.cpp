@@ -77,7 +77,13 @@ Nibbler display_graph(Nibbler nib)
     sf::Event event;
     sf::Text text;
     std::vector<sf::RectangleShape> rectangles;
+    sf::Font font;
 
+    if (!font.loadFromFile("arial.ttf")) {
+        std::cout << "ERror";
+        exit(84);
+    }
+    text.setFont(font);
     text.setString("Game Over");
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     text.setCharacterSize(24);
@@ -104,9 +110,9 @@ Nibbler display_graph(Nibbler nib)
         else {
             window.clear();
             window.draw(text);
+            window.display();
 
         }
-
     }
     return (nib);
 }
