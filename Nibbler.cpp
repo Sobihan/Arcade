@@ -181,74 +181,74 @@ bool Nibbler::isGameOver() const
 }
 
 /* FRONT A SUPPR*/
-#include <curses.h>
+// #include <curses.h>
 
 
 
-bool key_was_pressed(void)
-{
-    int key = getch();
+// bool key_was_pressed(void)
+// {
+//     int key = getch();
 
-    if (key != ERR) {
-        ungetch(key);
-        return (true);
-    }
-    return (false);
-}
+//     if (key != ERR) {
+//         ungetch(key);
+//         return (true);
+//     }
+//     return (false);
+// }
 
-void input(Nibbler nib)
-{
-    Direction move;
-    initscr();
-    cbreak();
-    noecho();
-    nodelay(stdscr, TRUE);
-    curs_set(FALSE);
-    keypad(stdscr, TRUE);
+// void input(Nibbler nib)
+// {
+//     Direction move;
+//     initscr();
+//     cbreak();
+//     noecho();
+//     nodelay(stdscr, TRUE);
+//     curs_set(FALSE);
+//     keypad(stdscr, TRUE);
     
-    std::vector <std::string> map;
+//     std::vector <std::string> map;
     
-    while (! nib.isGameOver()) {
-         if (key_was_pressed()) {
-            int key = getch();
+//     while (! nib.isGameOver()) {
+//          if (key_was_pressed()) {
+//             int key = getch();
             
-            if (key == KEY_DOWN)
-                move = DOWN;
-            else if (key == KEY_UP)
-                move = UP;
-            else if (key == KEY_LEFT)
-                move = LEFT;
-            else if (key == KEY_RIGHT)
-                move = RIGHT;
-        }
-        erase();
-        nib.setdir(move);
-        nib.change_dir();
-        nib.update();
-        map = nib.getmap();
-        int size = map.size();
-        for (int i = 0; i != size; i = i + 1)
-            for (int j = 0; j != map[i].size(); j = j + 1) {
-                char tmp = map[i][j];
-                if (tmp == '#')
-                    mvprintw(i, j, "#");
-                else if (tmp == ' ')
-                    mvprintw(i, j, " ");
-                else if (tmp == 'F')
-                    mvprintw(i, j, "F");
-                else if (tmp == 'O')
-                    mvprintw(i, j, "O");
-                else if (tmp == 'o')
-                    mvprintw(i, j, "o");
-            }
-        for (double x = 0; x < 29998999; x += 1);
-    }
-    endwin();
-}
+//             if (key == KEY_DOWN)
+//                 move = DOWN;
+//             else if (key == KEY_UP)
+//                 move = UP;
+//             else if (key == KEY_LEFT)
+//                 move = LEFT;
+//             else if (key == KEY_RIGHT)
+//                 move = RIGHT;
+//         }
+//         erase();
+//         nib.setdir(move);
+//         nib.change_dir();
+//         nib.update();
+//         map = nib.getmap();
+//         int size = map.size();
+//         for (int i = 0; i != size; i = i + 1)
+//             for (int j = 0; j != map[i].size(); j = j + 1) {
+//                 char tmp = map[i][j];
+//                 if (tmp == '#')
+//                     mvprintw(i, j, "#");
+//                 else if (tmp == ' ')
+//                     mvprintw(i, j, " ");
+//                 else if (tmp == 'F')
+//                     mvprintw(i, j, "F");
+//                 else if (tmp == 'O')
+//                     mvprintw(i, j, "O");
+//                 else if (tmp == 'o')
+//                     mvprintw(i, j, "o");
+//             }
+//         for (double x = 0; x < 29998999; x += 1);
+//     }
+//     endwin();
+// }
 
 /* FRONT A SUPPR*/
-int main()
-{
-    Nibbler nib;
-    input(nib);
-}
+// int main()
+// {
+//     Nibbler nib;
+//     input(nib);
+// }
