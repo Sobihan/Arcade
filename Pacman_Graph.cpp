@@ -43,13 +43,17 @@ std::vector <sf::Color> putcolor()
     return (colors);
 }
 
-std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map)
+std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map, std::vector<sf::RectangleShape> &old, int index)
 {
     int size = map.size();
     int lenght = 0;
     std::vector<sf::RectangleShape> rect;
     std::vector<sf::Color> colors = putcolor();
 
+    old.clear();
+   // for (int i = 0; old.size() != 2; i = i + 1) {
+     //   delete &old[0];
+    //}
     for (int y = 0; y != size; y = y + 1) {
         lenght = map[y].size();
         for (int x = 0; x != lenght; x = x + 1) {
@@ -80,19 +84,22 @@ Pacman display_graph(Pacman pac)
     sf::Text text;
     std::vector<sf::RectangleShape> rectangles;
     sf::Font font;
-    
+    int index = 0;
+
     window.setFramerateLimit(60);
-     while (window.isOpen()) {
+    while (window.isOpen()) {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
                 exit(0);
             }
+        }
             if ( ! pac.isGameOver()) {
                 move = get_direction(move);
                 pac.change_dir(move);
                 map = pac.getMap();
-                rectangles = generate_rect(map);
+                rectangles = generate_rect(map, rectangles, index);
+                index = index + 1;
                 int size = rectangles.size();
                 for (int i = 0; i != size; i = i + 1)
                     window.draw(rectangles[i]);
@@ -103,7 +110,7 @@ Pacman display_graph(Pacman pac)
                 window.draw(text);
                 for (double x = 0; x < 29998999; x += 1);
             }
-        }
+        
     }
     return (pac);
 }
