@@ -85,17 +85,10 @@ Nibbler display_graph(Nibbler nib)
     sf::Sprite gameoverr;
     is_graph = true;
 
-    sf::Font scoreo;
-    sf::Text view;
-
     text.setFont(font);
     text.setString("Game Over");
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     text.setCharacterSize(24);
-
-
-
-    
 
     gameover.loadFromFile("fin.jpg");
     gameoverr.setTexture(gameover);
@@ -125,12 +118,7 @@ Nibbler display_graph(Nibbler nib)
             int size = rectangles.size();
             for (int i = 0; i != size; i = i + 1)
                 window.draw(rectangles[i]);
-                 text.setFont(font);
-    int score = nib.getscore();
-    std::string scorez = std::to_string(score);
-
-
-    text.setString("SCORE: " + scorez);
+            text.setString("Score: " + std::to_string(nib.getscore()));
             window.display();
             window.clear();
             window.draw(text);
@@ -141,8 +129,6 @@ Nibbler display_graph(Nibbler nib)
             window.clear();
             window.draw(gameoverr);
             window.display();
-            for (double x = 0; x < 1382299229; x = x + 1);
-                exit (0);
         }
         if (is_graph == false) {
                 window.close();
@@ -152,10 +138,10 @@ Nibbler display_graph(Nibbler nib)
     return (nib);
 }
 
-// int main()
-// {
-//     Nibbler nib;
-//     std::vector <std::string> map;
+int main()
+{
+    Nibbler nib;
+    std::vector <std::string> map;
 
-//     nib = display_graph(nib);
-// }
+    nib = display_graph(nib);
+}
