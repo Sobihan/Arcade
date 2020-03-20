@@ -11,6 +11,7 @@ Nibbler::Nibbler()
 {
     this->limit.height = 20;
     this->limit.width = 20;
+    srand(time(NULL));
     this->fruit.x = rand() % this->limit.width;
     this->fruit.y = rand() % this->limit.height;
     this->snake.x = this->limit.width / 2;

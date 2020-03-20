@@ -17,6 +17,7 @@ Pacman::Pacman()
     this->player.eatgum = false;
     this->player.duration = 0.0;
     this->score = 0;
+    srand(time(NULL));
 
     this->ghost.x = this->player.x;
     this->ghost.y = this->player.y - 2;
