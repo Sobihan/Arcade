@@ -55,7 +55,7 @@ class Nibbler {
         std::string get_line (int j, int i, std::string line);
         void hitbox();
         std::vector <std::string> getmap() const;
-        void change_dir();
+        void change_dir(Direction move);
         void setdir(Direction move);
         bool isGameOver() const;
         void tailmove();

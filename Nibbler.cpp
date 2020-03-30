@@ -145,8 +145,9 @@ void Nibbler::tailmove()
     }
 }
 
-void Nibbler::change_dir()
+void Nibbler::change_dir(Direction move)
 {
+    setdir(move);
     if (this->dir != STOP && this->firstmove < 4) {
         this->firstmove += 1;
         this->snake.ntail += 1;
@@ -168,6 +169,7 @@ void Nibbler::change_dir()
     default:
         break;
     }
+    update();
 }
 
 void Nibbler::setdir(Direction move)
