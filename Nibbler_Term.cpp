@@ -91,17 +91,8 @@ Nibbler display_term(Nibbler nib)
     while (true) {
         if (! nib.isGameOver()) {
             move = get_key(move);
-            if (is_term == false) {
-                nib.setdir(STOP);
-                nib.change_dir();
-                for (double x = 0; x < 29998999; x += 1);
-                nib.update();
-                break;
-            }
-            nib.setdir(move);
-            nib.change_dir();
-            nib.update();
-            map = nib.getmap();
+            nib.change_dir(move);
+            map = nib.getMap();
             parse_data(map);
         } else {
             erase();

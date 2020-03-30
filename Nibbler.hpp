@@ -54,7 +54,7 @@ class Nibbler {
         snakes getsnake() const;
         std::string get_line (int j, int i, std::string line);
         void hitbox();
-        std::vector <std::string> getmap() const;
+        std::vector <std::string> getMap() const;
         void change_dir(Direction move);
         void setdir(Direction move);
         bool isGameOver() const;

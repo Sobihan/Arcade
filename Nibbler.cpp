@@ -120,7 +120,7 @@ void Nibbler::update()
     this->map = map;
 }
 
-std::vector <std::string> Nibbler::getmap() const
+std::vector <std::string> Nibbler::getMap() const
 {
     return (this->map);
 }

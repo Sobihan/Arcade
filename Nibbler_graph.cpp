@@ -110,10 +110,8 @@ Nibbler display_graph(Nibbler nib)
         }
         if (! nib.isGameOver()) {
             move = get_direction(move);
-            nib.setdir(move);
-            nib.change_dir();
-            nib.update();
-            map = nib.getmap();
+            nib.change_dir(move);
+            map = nib.getMap();
             rectangles = generate_rect(map);
             int size = rectangles.size();
             for (int i = 0; i != size; i = i + 1)
