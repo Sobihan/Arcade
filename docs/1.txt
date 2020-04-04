@@ -1,0 +1,13 @@
+./This page will help you to add a game libray!
+
+
+
+
+
+
+
+
+ It is possible for you to create a new game library. To do this, you must create a child class
+  and implement all the methods from the arc::IGame interface class.\n
+  You can use the arc::ArcadeError for your exceptions as they are catched by
+  the core of the Arcade.
