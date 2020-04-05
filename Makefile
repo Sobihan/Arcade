@@ -38,3 +38,7 @@ fclean:
 .PHONY:				re
 re:				fclean all
 
+.PHONY: core games graphicals
+core:				re
+games:				re
+graphicals:			re
