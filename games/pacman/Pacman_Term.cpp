@@ -11,7 +11,7 @@
 #include <cstring>
 #include <curses.h>
 
-bool key_was_pressed(void)
+ bool keyy_was_pressed(void)
 {
     int key = getch();
 
@@ -34,7 +34,7 @@ void init_term()
 
 Direction get_key(Direction move)
 {
-    if (key_was_pressed()) {
+    if (keyy_was_pressed()) {
         int key = getch();
         if (key == KEY_RIGHT)
             move = RIGHT;
@@ -112,8 +112,8 @@ void input(Pacman pac)
     endwin();
 }
 
-int main()
-{
-    Pacman pac;
-    input(pac);
-}
+//  int main()
+// {
+//     Pacman pac;
+//     input(pac);
+// }

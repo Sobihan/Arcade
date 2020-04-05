@@ -117,6 +117,10 @@ Pacman display_graph(Pacman pac)
 
 int main()
 {
-    Pacman pac;
-    pac = display_graph(pac);
+    while (1) {
+        Pacman pac;
+
+        display_graph(pac);
+    }
+
 }

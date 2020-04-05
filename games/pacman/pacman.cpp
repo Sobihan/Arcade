@@ -314,8 +314,8 @@ void input()
     }
     endwin();
 }
-int main()
-{
+// int main()
+// {
     
-   input();
-}
+//    input();
+// }

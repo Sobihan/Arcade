@@ -15,11 +15,11 @@ LDFLAGS				=	-lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
 
 
 
-SRC				=	main.cpp			\
-					Nibbler.cpp			\
-					Nibbler_graph.cpp		\
-					Nibbler_Term.cpp
-
+SRC				=	Pacman_Graph.cpp \
+					Pacman_Term.cpp  \
+					Pacman.cpp		\
+					pacman.cpp		
+					
 OBJ				=	$(SRC:.cpp=.o)
 
 $(EXEC):			$(OBJ)
