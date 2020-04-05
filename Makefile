@@ -13,7 +13,7 @@ CXXFLAGS			=	-g3
 
 EXEC				=	arcade
 
-LDFLAGS				=	-lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
+LDFLAGS				=	-ldl -lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
 
 SRC				=	src/core/parse_main_args.cpp			\
 					src/core/main.cpp
