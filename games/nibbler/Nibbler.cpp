@@ -61,15 +61,21 @@ void Nibbler:: hitbox()
         this->snake.ntail += 1;
         this->score += 1;
     }
-    if (this->snake.y >= this->limit.height || this->snake.y <= 0)
+    if (this->snake.y >= this->limit.height || this->snake.y <= 0){
+
         this->GameOver = true;
-    if (this->snake.x >= this->limit.width || this->snake.x <= 0)
+    }
+
+    if (this->snake.x >= this->limit.width || this->snake.x <= 0) {
+
         this->GameOver = true;
-    for (int i = 0; i < this->snake.ntail; i = i + 1)
-        if (this->snake.tailX[i] == this->snake.x && this->snake.tailY[i] == this->snake.y) {
-            this->GameOver = true;
-            break;
-        }
+    }
+    //  for (int i = 0; i < this->snake.ntail; i = i + 1)
+    //      if (this->snake.tailX[i] == this->snake.x && this->snake.tailY[i] == this->snake.y) {
+    //          printf("yo");
+    //          this->GameOver = true;
+    //          break;
+    //      }
 
 }
 

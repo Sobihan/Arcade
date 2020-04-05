@@ -33,6 +33,7 @@ typedef struct fruit_s
 {
     int x;
     int y;
+    int pe;
 }fruits;
 
 enum Direction
@@ -61,12 +62,13 @@ class Nibbler {
         void tailmove();
         int getscore() const;
     protected:
+        bool GameOver;
+
     private:
         screens limit;
         fruits fruit;
         snakes snake;
         int firstmove;
-        bool GameOver;
         Direction dir;
         std::vector <std::string> map;
         int score;

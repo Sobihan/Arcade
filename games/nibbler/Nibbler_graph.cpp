@@ -54,6 +54,7 @@ std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map)
     return (rect);
 }
 
+
 bool is_graph = true;
 Direction get_direction(Direction move)
 {
@@ -72,7 +73,7 @@ Direction get_direction(Direction move)
 
 Nibbler display_graph(Nibbler nib)
 {
-
+    is_graph = true;
     sf::RenderWindow window(sf::VideoMode(1200, 1080), "Nibbler");
     window.setPosition(sf::Vector2i(0, 0));
     Direction move;
@@ -83,7 +84,6 @@ Nibbler display_graph(Nibbler nib)
     sf::Font font;
     sf::Texture gameover;
     sf::Sprite gameoverr;
-    is_graph = true;
 
     text.setFont(font);
     text.setString("Game Over");
@@ -111,6 +111,8 @@ Nibbler display_graph(Nibbler nib)
         if (! nib.isGameOver()) {
             move = get_direction(move);
             nib.change_dir(move);
+            nib.update();
+
             map = nib.getMap();
             rectangles = generate_rect(map);
             int size = rectangles.size();

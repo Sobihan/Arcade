@@ -28,9 +28,11 @@ void prepare_term()
     nodelay(stdscr, TRUE);
     curs_set(FALSE);
     keypad(stdscr, TRUE);
+    
 }
 
 bool is_term = true;
+int pe = 0;
 
 Direction get_key(Direction move)
 {
@@ -45,8 +47,12 @@ Direction get_key(Direction move)
             move = LEFT;
         else if (key == KEY_RIGHT)
             move = RIGHT;
-        if (key == KEY_BACKSPACE)
-            is_term = false;
+        if (key == KEY_BACKSPACE) {
+            is_term = FALSE;
+            pe = 1;
+            
+
+        }
     }
     return (move);
 }
@@ -84,19 +90,28 @@ char *get_Cstr(std::string name, std::string src)
 Nibbler display_term(Nibbler nib)
 {
     Direction move;
+  
     std::vector <std::string> map;
+    int key = getch();
     is_term = true;
-
     prepare_term();
-    while (true) {
+
+    while (is_term == true) {
         if (! nib.isGameOver()) {
             move = get_key(move);
             nib.change_dir(move);
             map = nib.getMap();
             parse_data(map);
-        } else {
+
+           
+        } if (nib.isGameOver()) {
             erase();
             mvprintw(0,0, "Game Over");
+
+        }
+        if (pe == 1) {
+            pe = -1;
+            is_term = false;
         }
         mvprintw(0, 200, get_Cstr("Score:", std::to_string(nib.getscore())));
         refresh();
