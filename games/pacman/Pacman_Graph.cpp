@@ -115,12 +115,12 @@ Pacman display_graph(Pacman pac)
     return (pac);
 }
 
-int main()
-{
-    while (1) {
-        Pacman pac;
+// int main()
+// {
+//     while (1) {
+//         Pacman pac;
 
-        display_graph(pac);
-    }
+//         display_graph(pac);
+//     }
 
-}
+// }
