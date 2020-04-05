@@ -5,7 +5,9 @@
 ## Makefile for arcade
 ##
 
-CXX				=	g++
+CXX					=	g++
+
+CPPFLAGS			=	-I include/
 
 CXXFLAGS			=	-g3
 
@@ -13,17 +15,13 @@ EXEC				=	arcade
 
 LDFLAGS				=	-lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
 
-
-
-SRC				=	main.cpp			\
-					Nibbler.cpp			\
-					Nibbler_graph.cpp		\
-					Nibbler_Term.cpp
+SRC				=	src/core/parse_main_args.cpp			\
+					src/core/main.cpp
 
 OBJ				=	$(SRC:.cpp=.o)
 
 $(EXEC):			$(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) $(LDFLAGS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJ) $(LDFLAGS)
 
 .PHONY:				all
 all:				$(EXEC)
