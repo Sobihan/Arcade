@@ -18,7 +18,8 @@ LDFLAGS				=	-lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
 SRC				=	Pacman_Graph.cpp \
 					Pacman_Term.cpp  \
 					Pacman.cpp		\
-					pacman.cpp		
+					pacman.cpp		\
+					main.cpp
 					
 OBJ				=	$(SRC:.cpp=.o)
 
