@@ -112,8 +112,8 @@ void input(Pacman pac)
     endwin();
 }
 
-//  int main()
-// {
-//     Pacman pac;
-//     input(pac);
-// }
+int mainc(void)
+{
+    Pacman pac;
+    input(pac);
+}

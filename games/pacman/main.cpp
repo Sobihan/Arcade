@@ -14,19 +14,10 @@
 
 Pacman input(Pacman pac);
 Pacman display_graph(Pacman pac);
+int mainc(void);
 
-int main()
-{  
-    Pacman pac;
-        input(pac);
+int main(void)
+{
+    mainc();
+    return (0);
 }
- 
-// int main()
-// {
-//     while (1) {
-//         Pacman pac;
-
-//         display_graph(pac);
-//     }
-
-// }
