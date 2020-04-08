@@ -12,11 +12,11 @@
 #include <curses.h>
 
 
-// Pacman input(Pacman pac);
+Pacman input(Pacman pac);
 
-// int main()
-// {  
-//     Pacman pac;
-//         input(pac);
-// }
+int main()
+{  
+    Pacman pac;
+        input(pac);
+}
  
