@@ -18,7 +18,8 @@ LDFLAGS				=	-lncurses -lsfml-graphics -lsfml-system -lsfml-window -o $(EXEC)
 SRC				=	main.cpp			\
 					Nibbler.cpp			\
 					Nibbler_graph.cpp		\
-					Nibbler_Term.cpp
+					Nibbler_Term.cpp	\
+					main.cpp
 
 OBJ				=	$(SRC:.cpp=.o)
 
