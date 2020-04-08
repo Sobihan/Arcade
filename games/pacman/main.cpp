@@ -16,11 +16,11 @@ Pacman input(Pacman pac);
 Pacman display_graph(Pacman pac);
 int mainc(void);
 
-// int main(void)
-// {
-//     mainc();
-//     return (0);
-// }
+// // int main(void)
+// // {
+// //     mainc();
+// //     return (0);
+// // }
 
 
 
@@ -36,7 +36,7 @@ int main()
         if (is_graph == false) {
             is_graph = true;
 
-            mainc();
+            pac = input(pac);
             
         } else {
             is_graph = false;

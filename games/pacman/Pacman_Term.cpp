@@ -98,7 +98,7 @@ char *get_Cstr(std::string name, std::string src)
     return (cstrs);
 }
 
-void input(Pacman pac)
+Pacman input(Pacman pac)
 {
     Direction move;
     is_term = true;
@@ -128,6 +128,7 @@ void input(Pacman pac)
         usleep(120500);
     }
     endwin();
+    return (pac);
 }
 
 int mainc(void)
