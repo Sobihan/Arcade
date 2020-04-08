@@ -11,7 +11,10 @@
 #include <cstring>
 #include <curses.h>
 
- bool keyy_was_pressed(void)
+bool is_term = 0;
+int pe = 0;
+
+bool keyy_was_pressed(void)
 {
     int key = getch();
 
@@ -44,6 +47,10 @@ Direction get_key(Direction move)
             move = DOWN;
         else if (key == KEY_LEFT)
             move = LEFT;
+        if (key == KEY_BACKSPACE) {
+            is_term = FALSE;
+            pe = 1;   
+        }
     }
     return (move);
 }
@@ -94,17 +101,28 @@ char *get_Cstr(std::string name, std::string src)
 void input(Pacman pac)
 {
     Direction move;
+    is_term = true;
     init_term();
     std::vector <std::string> map;
     double duration;
 
-    while (! pac.isGameOver()) {
+    while (is_term == true) {
+            if (! pac.isGameOver()) {
         move = get_key(move);
         refresh();
         pac.change_dir(move);
         map = pac.getMap();
         parse_data(map);
+         } if (pac.isGameOver()) {
+            erase();
+            mvprintw(0,0, "Game Over");
+         }
+        if (pe == 1) {
+            pe = -1;
+            is_term = false;
+        }
         duration = pac.get_duration();
+
         mvprintw(0, 200, get_Cstr("Score:", std::to_string(pac.getScore())));
         pac.choose_move(pac.get_duration());
         usleep(120500);
@@ -116,4 +134,5 @@ int mainc(void)
 {
     Pacman pac;
     input(pac);
+    return (0);
 }

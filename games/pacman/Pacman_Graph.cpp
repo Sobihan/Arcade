@@ -8,6 +8,7 @@
 #include "Pacman.hpp"
 #include <SFML/Graphics.hpp>
 
+bool is_graph = true;
 
 Direction get_direction(Direction move)
 {
@@ -19,6 +20,8 @@ Direction get_direction(Direction move)
         move = DOWN;
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         move = LEFT;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+        is_graph = false;
     return (move);
 }
 sf::RectangleShape new_Rect(int x, int y, sf::Color color)
@@ -76,6 +79,7 @@ std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map, std
 
 Pacman display_graph(Pacman pac)
 {
+    is_graph = true;
     sf::RenderWindow window(sf::VideoMode(1200, 1080), "Pacman");
     window.setPosition(sf::Vector2i(0, 0));
     Direction move;
@@ -110,6 +114,10 @@ Pacman display_graph(Pacman pac)
                 window.draw(text);
                 for (double x = 0; x < 29998999; x += 1);
             }
+             if (is_graph == false) {
+                window.close();
+                break;
+        }
         
     }
     return (pac);
