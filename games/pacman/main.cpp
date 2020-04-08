@@ -13,6 +13,7 @@
 
 
 Pacman input(Pacman pac);
+Pacman display_graph(Pacman pac);
 
 int main()
 {  
@@ -20,3 +21,12 @@ int main()
         input(pac);
 }
  
+// int main()
+// {
+//     while (1) {
+//         Pacman pac;
+
+//         display_graph(pac);
+//     }
+
+// }
