@@ -90,6 +90,7 @@ class Pacman {
 		ghosts goLeftG(ghosts g);
 		ghosts movement(ghosts g);
 		ghosts ghost_move(ghosts g);
+		std::string get_Game() const;
 		int getScore() const;
 		void choose_move(double duration);
 		double get_duration();

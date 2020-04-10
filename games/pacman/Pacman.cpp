@@ -289,7 +289,10 @@ void Pacman::choose_move(double duration)
         this->ghost = ghost_move(this->ghost);
 }
 
-
+std::string Pacman::get_Game() const
+{
+    return ("Pacman");
+}
 /*FRONT A SUPPR*/
 
 int Pacman::getScore() const

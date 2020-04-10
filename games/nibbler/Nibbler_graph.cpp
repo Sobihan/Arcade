@@ -123,7 +123,7 @@ Nibbler display_graph(Nibbler nib)
             window.clear();
             window.draw(text);
 
-            for (double x = 0; x < 29998999; x += 1);
+            //for (double x = 0; x < 29998999; x += 1);
         }
         else {
             window.clear();

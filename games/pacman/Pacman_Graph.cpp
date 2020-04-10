@@ -108,11 +108,9 @@ Pacman display_graph(Pacman pac)
                 for (int i = 0; i != size; i = i + 1)
                     window.draw(rectangles[i]);
                 text.setString("Score: " + std::to_string(pac.getScore()));
-                pac.choose_move(pac.get_duration());
                 window.display();
                 window.clear();
                 window.draw(text);
-                for (double x = 0; x < 29998999; x += 1);
             }
              if (is_graph == false) {
                 window.close();
@@ -122,13 +120,3 @@ Pacman display_graph(Pacman pac)
     }
     return (pac);
 }
-
-// int main()
-// {
-//     while (1) {
-//         Pacman pac;
-
-//         display_graph(pac);
-//     }
-
-// }
