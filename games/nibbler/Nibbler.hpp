@@ -60,6 +60,7 @@ class Nibbler {
         void setdir(Direction move);
         bool isGameOver() const;
         void tailmove();
+        std::string get_Game() const;
         int getscore() const;
     protected:
         bool GameOver;

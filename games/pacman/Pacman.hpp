@@ -83,13 +83,14 @@ class Pacman {
 		void goRight();
 		void goLeft();
 		ghosts Ghost_dir(ghosts g);
-		std::vector <std::string> getMap() const;
+		std::vector <std::string> getMap();
 		ghosts goUpG(ghosts g);
 		ghosts goDownG(ghosts g);
 		ghosts goRightG(ghosts g);
 		ghosts goLeftG(ghosts g);
 		ghosts movement(ghosts g);
 		ghosts ghost_move(ghosts g);
+		std::string get_Game() const;
 		int getScore() const;
 		void choose_move(double duration);
 		double get_duration();

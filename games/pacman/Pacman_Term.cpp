@@ -104,15 +104,13 @@ Pacman input(Pacman pac)
     is_term = true;
     init_term();
     std::vector <std::string> map;
-    double duration;
 
     while (is_term == true) {
             if (! pac.isGameOver()) {
-        move = get_key(move);
-        refresh();
-        pac.change_dir(move);
-        map = pac.getMap();
-        parse_data(map);
+            move = get_key(move);
+            pac.change_dir(move);
+            map = pac.getMap();
+            parse_data(map);
          } if (pac.isGameOver()) {
             erase();
             mvprintw(0,0, "Game Over");
@@ -121,11 +119,8 @@ Pacman input(Pacman pac)
             pe = -1;
             is_term = false;
         }
-        duration = pac.get_duration();
-
         mvprintw(0, 200, get_Cstr("Score:", std::to_string(pac.getScore())));
-        pac.choose_move(pac.get_duration());
-        usleep(120500);
+        refresh();
     }
     endwin();
     return (pac);

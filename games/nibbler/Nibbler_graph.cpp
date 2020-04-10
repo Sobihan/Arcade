@@ -9,13 +9,28 @@
 
 #include <SFML/Graphics.hpp>
 
+bool is_graph = true;
+Direction get_direction(Direction move)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        move = UP;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        move = RIGHT;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        move = DOWN;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        move = LEFT;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+        is_graph = false;
+    return (move);
+}
 
 sf::RectangleShape new_Rect(int x, int y, sf::Color color)
 {
     sf::RectangleShape rect;
 
     rect.setFillColor(color);
-    rect.setSize(sf::Vector2f(40, 40));
+    rect.setSize(sf::Vector2f(20, 20));
     rect.setPosition(x, y);
     return (rect);
 }
@@ -25,9 +40,10 @@ std::vector <sf::Color> putcolor()
     std::vector<sf::Color> colors;
 
     colors.push_back(sf::Color(192,192,192));
-    colors.push_back(sf::Color(0, 255, 0));
+    colors.push_back(sf::Color(255, 255, 0));
     colors.push_back(sf::Color(176, 242, 182));
     colors.push_back(sf::Color(255 , 9, 33));
+    colors.push_back(sf::Color(0, 255, 255));
     return (colors);
 }
 
@@ -55,21 +71,6 @@ std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map)
 }
 
 
-bool is_graph = true;
-Direction get_direction(Direction move)
-{
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        move = UP;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        move = RIGHT;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        move = DOWN;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        move = LEFT;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
-        is_graph = false;
-    return (move);
-}
 
 Nibbler display_graph(Nibbler nib)
 {
@@ -84,11 +85,10 @@ Nibbler display_graph(Nibbler nib)
     sf::Font font;
     sf::Texture gameover;
     sf::Sprite gameoverr;
+    int index = 0;
 
-    text.setFont(font);
-    text.setString("Game Over");
-    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    text.setCharacterSize(24);
+    window.setFramerateLimit(60);
+
 
     gameover.loadFromFile("fin.jpg");
     gameoverr.setTexture(gameover);
@@ -111,10 +111,16 @@ Nibbler display_graph(Nibbler nib)
         if (! nib.isGameOver()) {
             move = get_direction(move);
             nib.change_dir(move);
-            nib.update();
 
             map = nib.getMap();
+
+
+            //la//
             rectangles = generate_rect(map);
+
+
+
+
             int size = rectangles.size();
             for (int i = 0; i != size; i = i + 1)
                 window.draw(rectangles[i]);
@@ -123,11 +129,14 @@ Nibbler display_graph(Nibbler nib)
             window.clear();
             window.draw(text);
 
-            for (double x = 0; x < 29998999; x += 1);
         }
         else {
             window.clear();
-            window.draw(gameoverr);
+            if (pac.get_Game() == "Nibbler")
+                window.draw(gameoverr);
+            else
+                window.draw(gameoverr); // changer game over par 1 autre image pour dire win
+            window.display();
             window.display();
         }
         if (is_graph == false) {
