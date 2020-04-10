@@ -9,7 +9,6 @@
 #include <SFML/Graphics.hpp>
 
 bool is_graph = true;
-
 Direction get_direction(Direction move)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -75,7 +74,6 @@ std::vector<sf::RectangleShape> generate_rect(std::vector <std::string> map, std
     return (rect);
 }
 
-#include <unistd.h>
 
 Pacman display_graph(Pacman pac)
 {
@@ -88,9 +86,24 @@ Pacman display_graph(Pacman pac)
     sf::Text text;
     std::vector<sf::RectangleShape> rectangles;
     sf::Font font;
+    sf::Texture gameover;
+    sf::Sprite gameoverr;
     int index = 0;
 
     window.setFramerateLimit(60);
+
+
+    gameover.loadFromFile("fin.jpg");
+    gameoverr.setTexture(gameover);
+
+    if (!font.loadFromFile("arial.ttf")) {
+        std::cout << "ERror";
+        exit(84);
+    }
+
+    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    text.setCharacterSize(24);
+
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -98,12 +111,16 @@ Pacman display_graph(Pacman pac)
                 exit(0);
             }
         }
-            if ( ! pac.isGameOver()) {
+            if (! pac.isGameOver()) {
                 move = get_direction(move);
                 pac.change_dir(move);
                 map = pac.getMap();
+
+
+                //iciiiiiii//
                 rectangles = generate_rect(map, rectangles, index);
                 index = index + 1;
+
                 int size = rectangles.size();
                 for (int i = 0; i != size; i = i + 1)
                     window.draw(rectangles[i]);
@@ -112,7 +129,12 @@ Pacman display_graph(Pacman pac)
                 window.clear();
                 window.draw(text);
             }
-             if (is_graph == false) {
+             else {
+            window.clear();
+            window.draw(gameoverr);
+            window.display();
+            } 
+            if (is_graph == false) {
                 window.close();
                 break;
         }
