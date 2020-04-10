@@ -131,7 +131,10 @@ Pacman display_graph(Pacman pac)
             }
              else {
             window.clear();
-            window.draw(gameoverr);
+            if (pac.get_Game() == "Nibbler")
+                window.draw(gameoverr);
+            else
+                window.draw(gameoverr); // changer game over par 1 autre image pour dire win
             window.display();
             } 
             if (is_graph == false) {
