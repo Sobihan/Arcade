@@ -83,7 +83,7 @@ class Pacman {
 		void goRight();
 		void goLeft();
 		ghosts Ghost_dir(ghosts g);
-		std::vector <std::string> getMap() const;
+		std::vector <std::string> getMap();
 		ghosts goUpG(ghosts g);
 		ghosts goDownG(ghosts g);
 		ghosts goRightG(ghosts g);

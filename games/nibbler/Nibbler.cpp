@@ -128,6 +128,7 @@ void Nibbler::update()
 
 std::vector <std::string> Nibbler::getMap() const
 {
+    for (double x = 0; x < 29998999; x += 1);
     return (this->map);
 }
 

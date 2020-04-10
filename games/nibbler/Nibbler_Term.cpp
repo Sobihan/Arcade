@@ -115,7 +115,6 @@ Nibbler display_term(Nibbler nib)
         }
         mvprintw(0, 200, get_Cstr("Score:", std::to_string(nib.getscore())));
         refresh();
-        for (double x = 0; x < 29998999; x += 1);
     }
     endwin();
     return (nib);

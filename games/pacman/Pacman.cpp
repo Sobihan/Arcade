@@ -143,8 +143,19 @@ void Pacman::change_dir(Direction dir)
         this->gameOver = true;
 }
 
-std::vector <std::string> Pacman::getMap() const
+double Pacman::get_duration()
 {
+    this->duration = (std::clock() - this->start) / (double) CLOCKS_PER_SEC;
+    return (this->duration);
+}
+
+#include <unistd.h>
+
+std::vector <std::string> Pacman::getMap()
+{
+    this->duration = (std::clock() - this->start) / (double) CLOCKS_PER_SEC;
+    choose_move(this->duration);
+    usleep(120500);
     return (this->map);
 }
 
@@ -278,11 +289,7 @@ void Pacman::choose_move(double duration)
         this->ghost = ghost_move(this->ghost);
 }
 
-double Pacman::get_duration()
-{
-    this->duration = (std::clock() - this->start) / (double) CLOCKS_PER_SEC;
-    return (this->duration);
-}
+
 /*FRONT A SUPPR*/
 
 int Pacman::getScore() const
